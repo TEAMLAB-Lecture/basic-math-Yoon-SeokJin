@@ -1,3 +1,8 @@
+1. fstring과 format 둘 다 빈칸 특정 문자로 채우기와 패딩(좌, 우, 중간) 다 지원된다. old-school 형식만 안 됨
+2. sorted와 sort함수 차이
+3. 함수를 연달아 선언할 때 함수 사이의 간격은 두 줄을 띄운다. 파이썬 포멧팅
+4. -5~256은 상수로 설정되어있다. 100 is 100 은 True, 300 is 300 은 False
+5. for else.
 #######################
 # Basic Math          #
 #######################
@@ -75,7 +80,7 @@ def get_mean(number_list):
     mean = 0
     for i in number_list:
         mean += i
-    mean /= len(number_list)
+    mean //= len(number_list)
     return mean
 
 
@@ -99,5 +104,8 @@ def get_median(number_list):
             >>> bm.get_median(number_list2)
             35.5
     """
-    idx = len(number_list / 2)
-    return sorted(number_list)[idx]
+    number_list.sort()
+    listLen = len(number_list)
+    if listLen & 1 == 0:
+        return (number_list[listLen // 2 - 1] + number_list[listLen // 2]) / 2
+    return number_list[listLen // 2]
